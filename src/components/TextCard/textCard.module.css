@@ -1,0 +1,24 @@
+.textCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+
+    background: #FFFFFF;
+    border-radius: 8px;
+
+    /* font-family: 'Roboto'; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #1B1F23;
+}
+
+.textCard b {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+}

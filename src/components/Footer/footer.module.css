@@ -40,3 +40,6 @@
     right: 32px;
     top: 31.5px;
 }
+.about:hover {
+    cursor: pointer;
+}
