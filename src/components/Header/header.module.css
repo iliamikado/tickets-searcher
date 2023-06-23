@@ -5,13 +5,15 @@
     align-items: center;
     padding: 24px 32px;
     
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 84px;
     left: 0px;
     top: 0px;
 
     background: #333333;
+
+    z-index: 2;
 }
 .name {
     width: 241px;

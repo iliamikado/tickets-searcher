@@ -7,7 +7,6 @@
     gap: 8px;
 
     height: 40px;
-    width: 500px;
 
     background: #FFFFFF;
 
@@ -16,7 +15,7 @@
     align-self: stretch;
     position: relative;
 
-    font-family: 'SF Pro Text';
+    /* font-family: 'SF Pro Text'; */
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

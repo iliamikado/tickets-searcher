@@ -6,6 +6,7 @@
     gap: 24px;
     background: #FFFFFF;
     border-radius: 8px;
+    margin: 8px;
 }
 
 .picture {
@@ -56,39 +57,13 @@
     align-items: center;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
-    padding: 0px;
-    gap: 5px;
-    width: 70px;
-    height: 20px;
-}
-
-.button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
+.cross {
+    width: 12.5px;
+    height: 12.5px;
     position: relative;
+    top: 3.75px;
+    left: 3.75px
 }
-
-.buttonActive {
-    background: #FF5500;
-}
-.buttonActive:hover {
+.cross:hover {
     cursor: pointer;
-}
-.buttonDisable {
-    background: #FFA375;
-}
-.ticketCount {
-    width: 20px;
-    height: 20px;
-    text-align: center;
 }

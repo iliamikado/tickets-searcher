@@ -1,0 +1,40 @@
+.mainPage {
+    overflow: auto;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 20px;
+
+    max-width: 400px;
+    position: fixed;
+    left: 32px;
+    top: 108px;
+    bottom: 100px;
+
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.inputWithLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    
+    width: 360px;
+    height: 64px;
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1B1F23;
+}
+
+.ticketCards {
+    margin: 100px 0px 100px 450px;
+}
