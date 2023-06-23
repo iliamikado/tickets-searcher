@@ -6,16 +6,19 @@ import cross from '../../../public/cross.svg';
 
 import styles from './ticketCard.module.css';
 import { TicketsCounter } from "../TicketsCounter/ticketsCounter";
+import { useRouter } from "next/navigation";
 
 interface Props {
     picture: string,
     name: string,
     genre: string,
+    filmId: string,
     removeOnZero?: () => boolean
 }
 
 export function TicketCard(props: Props): ReactElement {
-    const {picture, name, genre, removeOnZero} = props;
+    const {picture, name, genre, filmId, removeOnZero} = props;
+    const router = useRouter();
 
     return (
         <div className={styles.ticketCard}>
@@ -24,10 +27,10 @@ export function TicketCard(props: Props): ReactElement {
             </div>
             <div className={styles.infoBlock}>
                 <div className={styles.textInfo}>
-                    <span className={styles.name}>{name}</span>
+                    <span className={styles.name} onClick={() => router.push(`film/${filmId}`)}>{name}</span>
                     <span className={styles.genre}>{genre}</span>
                 </div>
-                <TicketsCounter ticketId={0} removeOnZero={removeOnZero}/>
+                <TicketsCounter ticketId={filmId} removeOnZero={removeOnZero}/>
                 {removeOnZero ? <div className={styles.cross} onClick={removeOnZero}>
                     <Image src={cross} alt="delete" fill/>
                 </div> : null}

@@ -19,8 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header ticketsCount={30}/>
-        {children}
-        <Footer/>
+        <div style={{minHeight: "100vh", overflow: 'auto', position: 'relative'}}>
+          {children}
+          <Footer/>
+        </div>
       </body>
     </html>
   )

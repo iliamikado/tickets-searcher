@@ -21,7 +21,7 @@ export default function MainPage() {
     }, [])
 
     return (
-        <div className={styles.mainPage}>
+        <div>
             <div className={styles.filters}>
                 <span>Фильтр поиска</span>
                 <div className={styles.inputWithLabel}>
@@ -52,6 +52,7 @@ export default function MainPage() {
                     return true;
                 }).map(film => (<TicketCard
                     key={film.id}
+                    filmId={film.id}
                     picture={film.posterUrl}
                     name={film.title}
                     genre={film.genre}

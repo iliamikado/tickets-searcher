@@ -26,6 +26,9 @@
     
     color: #FFFFFF;
 }
+.name:hover {
+    cursor: pointer;
+}
 .ticketsCount {
     display: flex;
     flex-direction: row;

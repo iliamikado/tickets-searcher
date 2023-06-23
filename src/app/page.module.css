@@ -1,7 +1,3 @@
-.mainPage {
-    overflow: auto;
-}
-
 .filters {
     display: flex;
     flex-direction: column;

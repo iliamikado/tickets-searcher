@@ -47,6 +47,9 @@
     display: flex;
     align-items: center;
 }
+.name:hover {
+    cursor: pointer;
+}
 
 .genre {
     height: 20px;

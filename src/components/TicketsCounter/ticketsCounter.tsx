@@ -8,7 +8,7 @@ import minus from '../../../public/minus.svg'
 import plus from '../../../public/plus.svg'
 
 interface Props {
-    ticketId: number,
+    ticketId: string,
     removeOnZero?: () => boolean
 }
 
