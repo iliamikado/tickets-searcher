@@ -2,6 +2,7 @@ import { Header } from '@/components/Header/header'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Footer } from '@/components/Footer/footer'
+import { StoreProvider } from '@/store/storeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header ticketsCount={30}/>
-        <div style={{minHeight: "100vh", overflow: 'auto', position: 'relative'}}>
-          {children}
-          <Footer/>
-        </div>
+        <StoreProvider>
+          <Header/>
+          <div style={{minHeight: "100vh", overflow: 'auto', position: 'relative'}}>
+            {children}
+            <Footer/>
+          </div>
+        </StoreProvider>
       </body>
     </html>
   )

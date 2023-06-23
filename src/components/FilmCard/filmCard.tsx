@@ -18,7 +18,7 @@ export function FilmCard(props: Props) {
                 <Image src={film.posterUrl} fill alt="poster" style={{borderRadius: 8}}/>
             </div>
             <div className={styles.counter}>
-                <TicketsCounter ticketId={film.id}/>
+                <TicketsCounter movieId={film.id}/>
             </div>
             <div className={styles.info}>
                 <span className={styles.title}>{film.title}</span>

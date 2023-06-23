@@ -30,7 +30,7 @@ export function TicketCard(props: Props): ReactElement {
                     <span className={styles.name} onClick={() => router.push(`film/${filmId}`)}>{name}</span>
                     <span className={styles.genre}>{genre}</span>
                 </div>
-                <TicketsCounter ticketId={filmId} removeOnZero={removeOnZero}/>
+                <TicketsCounter movieId={filmId} removeOnZero={removeOnZero}/>
                 {removeOnZero ? <div className={styles.cross} onClick={removeOnZero}>
                     <Image src={cross} alt="delete" fill/>
                 </div> : null}
