@@ -56,3 +56,6 @@
     right: 34px;
     top: 28px;
 }
+.busket:hover {
+    cursor: pointer;
+}

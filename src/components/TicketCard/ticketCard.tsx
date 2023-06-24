@@ -1,40 +1,45 @@
 'use client'
 
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Image from 'next/image'
 import cross from '../../../public/cross.svg';
 
 import styles from './ticketCard.module.css';
 import { TicketsCounter } from "../TicketsCounter/ticketsCounter";
 import { useRouter } from "next/navigation";
+import { Film, getMovie } from "@/service/service";
 
 interface Props {
-    picture: string,
-    name: string,
-    genre: string,
     filmId: string,
-    removeOnZero?: () => boolean
+    removeOnZero?: () => void
 }
 
 export function TicketCard(props: Props): ReactElement {
-    const {picture, name, genre, filmId, removeOnZero} = props;
+    const {filmId, removeOnZero} = props;
+    const [film, setFilm] = useState<Film>();
     const router = useRouter();
+
+    useEffect(() => {
+        getMovie(filmId).then(setFilm);
+    }, [filmId]);
 
     return (
         <div className={styles.ticketCard}>
-            <div className={styles.picture}>
-                <Image src={picture} alt={name} fill style={{borderRadius: 8}}/>
-            </div>
-            <div className={styles.infoBlock}>
-                <div className={styles.textInfo}>
-                    <span className={styles.name} onClick={() => router.push(`film/${filmId}`)}>{name}</span>
-                    <span className={styles.genre}>{genre}</span>
+            {film ? <>
+                <div className={styles.picture}>
+                <Image src={film.posterUrl} alt={film.title} fill style={{borderRadius: 8}}/>
                 </div>
-                <TicketsCounter movieId={filmId} removeOnZero={removeOnZero}/>
-                {removeOnZero ? <div className={styles.cross} onClick={removeOnZero}>
-                    <Image src={cross} alt="delete" fill/>
-                </div> : null}
-            </div>
+                <div className={styles.infoBlock}>
+                    <div className={styles.textInfo}>
+                        <span className={styles.name} onClick={() => router.push(`film/${film.id}`)}>{film.title}</span>
+                        <span className={styles.genre}>{film.genre}</span>
+                    </div>
+                    <TicketsCounter movieId={film.id} removeOnZero={removeOnZero}/>
+                    {removeOnZero ? <div className={styles.cross} onClick={removeOnZero}>
+                        <Image src={cross} alt="delete" fill/>
+                    </div> : null}
+                </div>
+            </> : null}
         </div>
     )
 }

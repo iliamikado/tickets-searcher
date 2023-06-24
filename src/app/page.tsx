@@ -50,13 +50,7 @@ export default function MainPage() {
                         return false;
                     } 
                     return true;
-                }).map(film => (<TicketCard
-                    key={film.id}
-                    filmId={film.id}
-                    picture={film.posterUrl}
-                    name={film.title}
-                    genre={film.genre}
-                />))}
+                }).map(film => (<TicketCard key={film.id} filmId={film.id}/>))}
             </div>
         </div>
     )

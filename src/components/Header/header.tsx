@@ -17,7 +17,7 @@ export function Header() {
             {ticketsCount > 0 ? <div className={styles.ticketsCount}>
                 {ticketsCount}
             </div> : null}
-            <div className={styles.busket}>
+            <div className={styles.busket} onClick={() => router.push('/cart')}>
                 <Image src={busketIcon} alt="Busket" fill/>
             </div>
         </div>

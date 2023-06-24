@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <div id='modals' style={{zIndex: 5}}></div>
         <StoreProvider>
           <Header/>
           <div style={{minHeight: "100vh", overflow: 'auto', position: 'relative'}}>

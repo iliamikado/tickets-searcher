@@ -1,0 +1,22 @@
+.cartPage {
+    padding: 100px 24px 190px 24px;
+}
+.count {
+    position: absolute;
+    bottom: 110px;
+    left: 32px;
+    right: 32px;
+}
+.total {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+}
+.totalNumber {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}

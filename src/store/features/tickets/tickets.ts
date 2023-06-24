@@ -27,6 +27,13 @@ export const ticketSlice = createSlice({
                 return;
             }
             state.tickets[payload] -= 1;
+        },
+        removeAllTickets: (state: TicketsState, {payload}: {payload: string}) => {
+            if (state.tickets[payload] === undefined) {
+                return;
+            }
+            state.count -= state.tickets[payload];
+            delete state.tickets[payload];
         }
     }
 });

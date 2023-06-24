@@ -1,0 +1,36 @@
+.modalBack {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    
+    background: rgba(0, 0, 0, 0.5);
+    z-index: inherit;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 24px;
+
+    position: absolute;
+    width: 350px;
+    left: calc(50% - 344px/2);
+    top: calc(50% - 168px/2);
+
+    /* White */
+
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+.cross {
+    position: absolute;
+    top: 29px;
+    right: 27px;
+}
+.cross:hover {
+    cursor: pointer;
+}

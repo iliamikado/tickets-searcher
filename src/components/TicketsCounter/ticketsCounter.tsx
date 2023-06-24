@@ -11,7 +11,7 @@ import { TicketsState, ticketSlice } from "@/store/features/tickets/tickets";
 
 interface Props {
     movieId: string,
-    removeOnZero?: () => boolean
+    removeOnZero?: () => void
 }
 
 const MAX_TICKETS_COUNT = 30;
@@ -31,7 +31,11 @@ export function TicketsCounter(props: Props): ReactElement {
     return (
         <div className={styles.buttons}>
             <button className={decreaseClassname} onClick={() => {
-                if (removeOnZero && ticketsCount === 1 && !removeOnZero() || ticketsCount === 0) {
+                if (removeOnZero && ticketsCount === 1) {
+                    removeOnZero();
+                    return;
+                }
+                if (ticketsCount === 0) {
                     return;
                 }
                 dispatch(ticketSlice.actions.removeTicket(movieId));

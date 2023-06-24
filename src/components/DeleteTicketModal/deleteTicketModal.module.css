@@ -1,0 +1,62 @@
+.title {
+    height: 20px;
+    /* font-family: 'Roboto'; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #1B1F23;
+}
+.text {
+    height: 20px;
+    /* font-family: 'Roboto'; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;  
+    display: flex;
+    align-items: center;
+    color: #1B1F23;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    height: 40px;
+}
+.buttonYes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 14px;
+    gap: 8px;
+    
+    width: 51px;
+    height: 40px;
+    background: #FF5500;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+.buttonNo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 7px 14px;
+    gap: 8px;
+    width: 57px;
+    height: 40px;
+    border: 1px solid #FF5500;
+    border-radius: 8px;
+    color: #FF5500;
+}
+.buttonNo:hover {
+    cursor: pointer;
+}
+.buttonYes:hover {
+    cursor: pointer;
+}
