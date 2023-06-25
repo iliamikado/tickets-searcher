@@ -4,12 +4,12 @@ import { Selector } from '@/components/Selector/selector';
 import styles from './page.module.css';
 import { Input } from '@/components/Input/input';
 import { useEffect, useState } from 'react';
-import { Film, getAllCinemas, getAllFilms, getFilmsInCinema, Cinema } from '@/service/service';
+import { Movie, getAllCinemas, getAllMovies, getMoviesInCinema, Cinema } from '@/service/service';
 import { TicketCard } from '@/components/TicketCard/ticketCard';
 
 export default function MainPage() {
 
-    const [films, setFilms] = useState<Film[]>([]);
+    const [movies, setMovies] = useState<Movie[]>([]);
     const [cinemas, setCinemas] = useState<Cinema[]>([]);
     const [genres, setGenres] = useState<string[]>([]);
     const [currentGenre, setCurrentGenre] = useState<string>();
@@ -17,7 +17,7 @@ export default function MainPage() {
 
     useEffect(() => {
         getAllCinemas().then(data => setCinemas(data));
-        setFilmsAndGenres(setFilms, setGenres);
+        setMoviesAndGenres(setMovies, setGenres);
     }, [])
 
     return (
@@ -38,37 +38,37 @@ export default function MainPage() {
                     <span>Кинотеатр</span>
                     <Selector placeholder='Выберите кинотеатр'
                         items={['Не выбран', ...cinemas.map(cinema => (cinema.name))]}
-                        onChangeOption={(option) => {setFilmsAndGenres(setFilms, setGenres, cinemas[option - 1]?.id)}}/>
+                        onChangeOption={(option) => {setMoviesAndGenres(setMovies, setGenres, cinemas[option - 1]?.id)}}/>
                 </div>
             </div>
             <div className={styles.ticketCards}>
-                {films.filter(film => {
-                    if (currentGenre && film.genre !== currentGenre) {
+                {movies.filter(movie => {
+                    if (currentGenre && movie.genre !== currentGenre) {
                         return false;
                     }
-                    if (searchPart && !film.title.toLowerCase().includes(searchPart.toLowerCase())) {
+                    if (searchPart && !movie.title.toLowerCase().includes(searchPart.toLowerCase())) {
                         return false;
                     } 
                     return true;
-                }).map(film => (<TicketCard key={film.id} filmId={film.id}/>))}
+                }).map(movie => (<TicketCard key={movie.id} movieId={movie.id}/>))}
             </div>
         </div>
     )
 }
 
-function setFilmsAndGenres(setFilms: any, setGenres: any, cinemaId?: string): void {
-    let films;
+function setMoviesAndGenres(setMovies: any, setGenres: any, cinemaId?: string): void {
+    let movies;
     if (!cinemaId) {
-        films = getAllFilms();
+        movies = getAllMovies();
     } else {
-        films = getFilmsInCinema(cinemaId);
+        movies = getMoviesInCinema(cinemaId);
     }
-    films.then(data => {
+    movies.then(data => {
         const genres: Set<string> = new Set();
-        data.forEach((film) => {
-            genres.add(film.genre)
+        data.forEach((movie) => {
+            genres.add(movie.genre)
         });
-        setFilms(data);
+        setMovies(data);
         setGenres(Array.from(genres));
     });
 }

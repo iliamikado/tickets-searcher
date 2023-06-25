@@ -1,7 +1,7 @@
 'use client'
 
-import { FilmCard } from "@/components/FilmCard/filmCard";
-import { Film, Review, getMovie, getReviews } from "@/service/service";
+import { MovieCard } from "@/components/MovieCard/movieCard";
+import { Movie, Review, getMovie, getReviews } from "@/service/service";
 import { useEffect, useState } from "react";
 import { ReviewCard } from "@/components/ReviewCard/reviewCard";
 
@@ -13,19 +13,19 @@ interface Props {
     }
 }
 
-export default function FilmPage(props: Props) {
+export default function MoviePage(props: Props) {
     const {id} = props.params;
-    const [film, setFilm] = useState<Film>();
+    const [movie, setMovie] = useState<Movie>();
     const [reviews, setReviews] = useState<Review[]>([]);
 
     useEffect(() => {
-        getMovie(id).then(setFilm);
+        getMovie(id).then(setMovie);
         getReviews(id).then(setReviews);
     }, [id]);
 
     return (
-        <div className={styles.filmPage}>
-            {film ? <FilmCard film={film}/> : null}
+        <div className={styles.moviePage}>
+            {movie ? <MovieCard movie={movie}/> : null}
             {reviews.map(review => (<ReviewCard key={review.id} review={review}/>))}
         </div>
     );

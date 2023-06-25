@@ -16,9 +16,9 @@ export default function CartPage() {
     const [openModal, setOpenModal] = useState<string>();
 
     return <div className={styles.cartPage}>
-        {Object.keys(tickets.tickets).map(filmId => {
-            return <TicketCard key={filmId} filmId={filmId} removeOnZero={() => {
-                setOpenModal(filmId);
+        {Object.keys(tickets.tickets).map(movieId => {
+            return <TicketCard key={movieId} movieId={movieId} removeOnZero={() => {
+                setOpenModal(movieId);
             }}/>
         })}
         <div className={styles.count}>

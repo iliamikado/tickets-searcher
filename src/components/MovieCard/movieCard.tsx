@@ -1,45 +1,45 @@
 'use client'
 
-import { Film } from "@/service/service"
+import { Movie } from "@/service/service"
 
-import styles from './filmCard.module.css';
+import styles from './movieCard.module.css';
 import Image from "next/image";
 import { TicketsCounter } from "../TicketsCounter/ticketsCounter";
 
 interface Props {
-    film: Film
+    movie: Movie
 }
 
-export function FilmCard(props: Props) {
-    const {film} = props;
+export function MovieCard(props: Props) {
+    const {movie} = props;
     return (
-        <div className={styles.filmCard}>
+        <div className={styles.movieCard}>
             <div className={styles.poster}>
-                <Image src={film.posterUrl} fill alt="poster" style={{borderRadius: 8}}/>
+                <Image src={movie.posterUrl} fill alt="poster" style={{borderRadius: 8}}/>
             </div>
             <div className={styles.counter}>
-                <TicketsCounter movieId={film.id}/>
+                <TicketsCounter movieId={movie.id}/>
             </div>
             <div className={styles.info}>
-                <span className={styles.title}>{film.title}</span>
+                <span className={styles.title}>{movie.title}</span>
                 <div className={styles.param}>
                     <span className={styles.key}>Жанр:</span>
-                    <span className={styles.value}>{film.genre}</span>
+                    <span className={styles.value}>{movie.genre}</span>
                 </div>
                 <div className={styles.param}>
                     <span className={styles.key}>Год выпуска:</span>
-                    <span className={styles.value}>{film.releaseYear}</span>
+                    <span className={styles.value}>{movie.releaseYear}</span>
                 </div>
                 <div className={styles.param}>
                     <span className={styles.key}>Рейтинг:</span>
-                    <span className={styles.value}>{film.rating}</span>
+                    <span className={styles.value}>{movie.rating}</span>
                 </div>
                 <div className={styles.param}>
                     <span className={styles.key}>Режиссер:</span>
-                    <span className={styles.value}>{film.director}</span>
+                    <span className={styles.value}>{movie.director}</span>
                 </div>
                 <span className={styles.key}>Описание</span>
-                <div className={styles.description}>{film.description}</div>
+                <div className={styles.description}>{movie.description}</div>
             </div>
         </div>
     );

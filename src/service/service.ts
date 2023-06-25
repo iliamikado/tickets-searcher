@@ -4,7 +4,7 @@ function getResource(path: string) {
     return fetch(URL + path).then(data => data.json());
 }
 
-export type Film = {
+export type Movie = {
     title: string,
     posterUrl: string,
     releaseYear: number,
@@ -31,11 +31,11 @@ export type Review = {
 }
 
 const initialCash = {
-    films: {} as Record<string, Film>,
+    movies: {} as Record<string, Movie>,
     cinemas: {} as Record<string, Cinema>,
-    filmsInCinema: {} as Record<string, Film[]>,
+    moviesInCinema: {} as Record<string, Movie[]>,
     reviews: {} as Record<string, Review[]>,
-    gotAllFilms: false,
+    gotAllMovies: false,
     gotAllCinemas: false
 }
 
@@ -47,16 +47,16 @@ function updateCash() {
 }
 updateCash();
 
-export function getAllFilms(): Promise<Film[]> {
-    if (cash.gotAllFilms) {
-        return Promise.resolve(Object.values(cash.films));
+export function getAllMovies(): Promise<Movie[]> {
+    if (cash.gotAllMovies) {
+        return Promise.resolve(Object.values(cash.movies));
     }
-    cash.gotAllFilms = true;
-    return getResource('movies').then((films: Film[]) => {
-        films.forEach(film => {
-            cash.films[film.id] = film;
+    cash.gotAllMovies = true;
+    return getResource('movies').then((movies: Movie[]) => {
+        movies.forEach(movie => {
+            cash.movies[movie.id] = movie;
         })
-        return films;
+        return movies;
     });
 }
 
@@ -73,23 +73,23 @@ export function getAllCinemas(): Promise<Cinema[]> {
     });
 }
 
-export function getFilmsInCinema(cinemaId: string): Promise<Film[]> {
-    if (cash.filmsInCinema[cinemaId] !== undefined) {
-        return Promise.resolve(cash.filmsInCinema[cinemaId]);
+export function getMoviesInCinema(cinemaId: string): Promise<Movie[]> {
+    if (cash.moviesInCinema[cinemaId] !== undefined) {
+        return Promise.resolve(cash.moviesInCinema[cinemaId]);
     }
-    return getResource(`movies?cinemaId=${cinemaId}`).then((films: Film[]) => {
-        cash.filmsInCinema[cinemaId] = films;
-        return films;
+    return getResource(`movies?cinemaId=${cinemaId}`).then((movies: Movie[]) => {
+        cash.moviesInCinema[cinemaId] = movies;
+        return movies;
     });
 }
 
-export function getMovie(movieId: string): Promise<Film> {
-    if (cash.films[movieId]) {
-        return Promise.resolve(cash.films[movieId]);
+export function getMovie(movieId: string): Promise<Movie> {
+    if (cash.movies[movieId]) {
+        return Promise.resolve(cash.movies[movieId]);
     }
-    return getResource(`movie?movieId=${movieId}`).then((film: Film) => {
-        cash.films[movieId] = film;
-        return film;
+    return getResource(`movie?movieId=${movieId}`).then((movie: Movie) => {
+        cash.movies[movieId] = movie;
+        return movie;
     });
 }
 
