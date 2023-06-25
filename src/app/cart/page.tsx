@@ -1,8 +1,8 @@
 'use client'
 
-import { selectTicketsModule } from '@/store/features/tickets/selector';
+import { selectAllTicketsCount, selectMoviesIds } from '@/store/features/tickets/selector';
 import styles from './page.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import { TicketsState, ticketSlice } from '@/store/features/tickets/tickets';
 import { TicketCard } from '@/components/TicketCard/ticketCard';
 import { TextCard } from '@/components/TextCard/textCard';
@@ -11,22 +11,17 @@ import { DeleteTicketModal } from '@/components/DeleteTicketModal/deleteTicketMo
 import { useDispatch } from 'react-redux';
 
 export default function CartPage() {
-    const tickets = useSelector((state: {tickets: TicketsState}) => selectTicketsModule(state));
+    const moviesIds = useSelector((state: {tickets: TicketsState}) => selectMoviesIds(state), shallowEqual);
     const dispatch = useDispatch()
     const [openModal, setOpenModal] = useState<string>();
 
     return <div className={styles.cartPage}>
-        {Object.keys(tickets.tickets).map(movieId => {
+        {Array.from(moviesIds).map(movieId => {
             return <TicketCard key={movieId} movieId={movieId} removeOnZero={() => {
                 setOpenModal(movieId);
             }}/>
         })}
-        <div className={styles.count}>
-            <TextCard>
-                <div className={styles.total}>Итого билетов</div>
-                <div className={styles.totalNumber}>{tickets.count}</div> 
-            </TextCard>
-        </div>
+        <FinalCount/>
         {openModal ?
             <DeleteTicketModal onHide={() => setOpenModal(undefined)}
                 onYes={() => {
@@ -37,4 +32,16 @@ export default function CartPage() {
             /> : null
         }
     </div>
+}
+
+function FinalCount() {
+    const ticketsCount = useSelector((state: {tickets: TicketsState}) => selectAllTicketsCount(state));
+    return (
+        <div className={styles.count}>
+            <TextCard>
+                <div className={styles.total}>Итого билетов</div>
+                <div className={styles.totalNumber}>{ticketsCount}</div> 
+            </TextCard>
+        </div>
+    );
 }
